@@ -3,7 +3,8 @@ const db = require('../db');
 module.exports = {
     buscarTodos: () => {
         return new Promise((aceito, rejeitado) => {
-            db.query("SELECT e.id, p.nome as 'produto', f.nome as 'fornecedor', e.quantidade, e.data_entrada FROM estoque e inner join produtos p on p.id = e.produto_id inner join fornecedores f on f.id = e.fornecedor_id", (error, results) => {
+            db.query("SELECT e.id, p.nome as 'produto', f.nome as 'fornecedor', e.quantidade, e.data_entrada FROM estoque e inner join produtos p on p.id = e.produto_id inner join fornecedores f on f.id = e.fornecedor_id", 
+                (error, results) => {
                 if (error) {
                     rejeitado(error);
                     return;
@@ -15,7 +16,8 @@ module.exports = {
 
     buscarUm: (id) => {
         return new Promise((aceito, rejeitado) => {
-            db.query("SELECT e.id, p.nome as 'produto', f.nome as 'fornecedor', e.quantidade, e.data_entrada FROM estoque e inner join produtos p on p.id = e.produto_id inner join fornecedores f on f.id = e.fornecedor_id WHERE e.id = ?", [id], (error, results) => {
+            db.query("SELECT e.id, p.nome as 'produto', f.nome as 'fornecedor', e.quantidade, e.data_entrada FROM estoque e inner join produtos p on p.id = e.produto_id inner join fornecedores f on f.id = e.fornecedor_id WHERE e.id = ?", 
+                [id], (error, results) => {
                 if (error) {
                     rejeitado(error);
                     return;
