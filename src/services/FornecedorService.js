@@ -52,6 +52,7 @@ module.exports = {
                     rejeitado(error);
                     return;
                 }
+                aceito(results);
             });
         });
     },
